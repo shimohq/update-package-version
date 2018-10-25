@@ -1,0 +1,32 @@
+{
+  "name": "shimo-upv",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "upv": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shimohq/update-package-version.git"
+  },
+  "keywords": [
+    "update",
+    "package.json",
+    "package",
+    "version"
+  ],
+  "author": "Tom Wan<wanmingtom@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shimohq/update-package-version/issues"
+  },
+  "homepage": "https://github.com/shimohq/update-package-version#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0"
+  }
+}
