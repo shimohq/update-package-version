@@ -3,7 +3,9 @@
 
 # Update Package Version (UPV)
 
-Update your nodejs app package version in package.json and git commit it automatically
+Update your nodejs app package version in package.json and git commit it automatically.
+
+The commit message is like `chore: update package version to 2.2.2`.
 
 ## Install
 
@@ -11,9 +13,13 @@ Update your nodejs app package version in package.json and git commit it automat
 
 ## Usage
 
-`upv chalk 2.2.2`
+`upv your-pacakge-name your-package-version [-p]`
 
-If you want push it, use `upv chalk 2.2.2 -p` command.
+Use `-p` option if you want ti push that commit to git.
+
+### example
+
+`upv lodash 4.0.0 -p`
 
 # License
 
