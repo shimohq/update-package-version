@@ -15,9 +15,9 @@ The commit message is like `chore: update package version to 2.2.2`.
 
 `upv your-pacakge-name your-package-version [-p]`
 
-Use `-p` option if you want ti push that commit to git.
+Use `-p` option if you want to push that commit to git.
 
-### example
+### Example
 
 `upv lodash 4.0.0 -p`
 
