@@ -1,4 +1,4 @@
-[![Npm Version](https://img.shields.io/npm/v/upv.svg?style=flat)](https://img.shields.io/npm/v/upv.svg?style=flat)
+[![Npm Version](https://img.shields.io/npm/v/shimo-upv.svg?style=flat)](https://img.shields.io/npm/v/shimo-upv.svg?style=flat)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 # Update Package Version (UPV)
