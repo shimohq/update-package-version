@@ -43,8 +43,28 @@ if (!fs.existsSync(path.join(CWD, './package.json'))) {
   processEnd('Current folder has no `package.json` file!')
 }
 
+const state = {
+  hasFileToBeStashed: true
+}
+
 const steps = [
   {
+    cmd: ['git', ['status', '-s']],
+    cmdOption: {},
+    afterRunCommand (spawnResult) {
+      const needStashFiles = (spawnResult.stdout || '').toString().split('\n').filter(i => Boolean(i.trim()))
+      if (needStashFiles.length === 0) {
+        state.hasFileToBeStashed = false
+        console.log('You have nothing to be stashed, ignore `git stash`')
+      } else {
+        console.log(`You have ${needStashFiles.length} files to stash.`)
+      }
+    }
+  },
+  {
+    needToRun () {
+      return state.hasFileToBeStashed
+    },
     cmd: ['git', ['stash', '-u']]
   },
   {
@@ -67,6 +87,9 @@ if (program.push) {
 }
 
 steps.push({
+  needToRun () {
+    return state.hasFileToBeStashed
+  },
   cmd: ['git', ['stash', 'pop']]
 })
 
@@ -74,7 +97,16 @@ console.log(`You are updating pacakge ${chalk.blue(packageName)} to version ${ch
 
 steps.forEach((step, index) => {
   console.log(chalk.white.bgBlue(`Step ${index + 1}, Running \`${step.cmd[0] + ' ' + step.cmd[1].join(' ')}\`...`))
-  spawnSync.apply(null, step.cmd.concat({ stdio: 'inherit' }))
+  if (step.needToRun && !step.needToRun()) {
+    console.log(chalk.white.bgBlue(`Ignore this step`))
+    return
+  }
+
+  const spawnResult = spawnSync.apply(null, step.cmd.concat(step.cmdOption || { stdio: 'inherit' }))
+
+  if (step.afterRunCommand) {
+    step.afterRunCommand(spawnResult)
+  }
 })
 
 console.log(chalk.black.bgGreen('All done!'))
