@@ -19,7 +19,7 @@ Use `-p` option if you want to push that commit to git.
 
 ### Example
 
-`upv lodash 4.0.0 -p`
+`upv -p lodash 4.0.0`
 
 # License
 
